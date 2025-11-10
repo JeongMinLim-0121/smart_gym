@@ -130,71 +130,35 @@ EMG·IMU 센서 융합 파워리프팅 스쿼트 분석까지 지원하는 파�
 ---
 
 ## 🎬 **시연 예시**
-
-
 https://github.com/user-attachments/assets/f4ce4fb4-64c6-46c4-88ab-7b38399b903d
 
+  ## 로그인 / 회원가입
+  
+  - 회원 : 얼굴 인식으로 로그인
+  - 비회원 : 회원 가입 - 이름, 얼굴 등록
+  - 회원 가입 후 DB 추가
+  
+  ## 내 정보
+  
+  - 이름, 회원 등급 , 가입일, 회원권 만료일, 마지막 운동일 ,이번 주 총 운동 횟수 (7일 합계)
+  - 운동 별 미니 카드  :   운동 명, 총 횟수(회), 평균 점수(점)
+  - 데이터는 DB(회원 이름, 가입일 , 마지막 운동일, 운동 기록, 전체 운동 별 누적 통계)에서 불러옴
+  
+  ## 운동
+  
+  - 카메라 앞에 서면 랜드마크가 찍힘
+  - 운동 인식 후   운동 갯수 / 점수 평가 (운동 한번 할때 점수 + 전체 평균 점수)
+  - 운동 종류 : 스쿼트,  레그 레이즈,  푸시업, 숄더 프레스, 사레레, 덤벨 로우, 버피, 팔벌려 뛰기.
+  - 센서 착용 :  근육 피로도, 불균형 판단 모델 아키텍처 구현 및 프로토타입 모델 생성 → 스쿼트만 가능
+  - 운동 갯수 +1 될때마다 점수 특정 및 점수에 대한 조언 음성파일출력
+  
+  ## 운동 후 요약
+  
+  - 운동  화면에서 했던 운동의 총 운동 시간,  총 운동 횟수, 평균 점수
+  - 운동별 상세 결과 : 운동 이름 , 횟수 , 점수
 
 
 ---
-
-## 🧩 **Clone Code**
-git clone https://github.com/Biomedical-Signal-Processing-Lab/smart_gym_project.git
-
-
-## ⚙️ **Steps to Build**
-
-```
-# 0) 기본 설정
-sudo apt update
-sudo apt install -y git curl wget build-essential pkg-config
-python -m venv .sgym_venv
-source .sgym_venv/bin/activate
-cd smart_gym_project/app
-pip install -r requirements.txt
-
-# 1) Hailo (공식 APT 레포 추가 후 설치)
-# ⚠️ 반드시 벤더 문서 절차에 따라 레포를 먼저 등록해야 합니다.
-sudo apt install -y hailo-all
-
-# 2) GStreamer 런타임 + 플러그인 묶음
-sudo apt install -y \
-  gstreamer1.0-tools gstreamer1.0-plugins-base gstreamer1.0-plugins-good \
-  gstreamer1.0-plugins-bad gstreamer1.0-plugins-ugly gstreamer1.0-libav \
-  gstreamer1.0-gl gstreamer1.0-alsa
-
-# 3) GI(PyGObject) 바인딩 (Python에서 GStreamer를 사용하는 경우)
-sudo apt install -y \
-  python3-gi python3-gi-cairo gobject-introspection \
-  gir1.2-gstreamer-1.0 gir1.2-gst-plugins-base-1.0 libgirepository1.0-dev
-
-# 4) 카메라 유틸리티 설치
-sudo apt install -y v4l-utils libcamera-apps
-
-```
-## ▶️ **Step to Run**
-```
-# 1) 가상환경 활성화
-source .sgym_venv/bin/activate
-
-# 2) 프로젝트 실행
-python main.py
-
-
----
-
-> 💡 **Tip:**  
-> 첫 실행 시 `.venv` 환경을 다시 활성화해야 합니다:  
-> ```bash
-> source .sgym_venv/bin/activate
-> 
-> 실행 후 UI 창이 뜨면, 센서 연결 상태와 카메라 입력이 정상 동작하는지 로그를 확인하세요.
-
----
-
-
-```
-
 ## 🧩 **운동 분류 시스템**
 
 운동 분류 시스템은 **포즈 랜드마크 추출 → 시퀀스 분류 → (상세 분석) → (후속 처리)** 순서로 동작합니다.
@@ -292,21 +256,7 @@ python main.py
 | **AI_RMS** | \|RMS_L - RMS_R\| | 좌·우 근수축 세기 차이 |
 | **AI_iEMG** | \|iEMG_L - iEMG_R\| | 좌·우 근육 활성 차이 |
 | **BI (최종)** | 0.4×AI_RMS + 0.4×AI_iEMG + 0.2×AIF | 종합 불균형 점수 |
-
-
-### 6. 출력 및 시각화
-- **FI, BI, tempo_cv** 값을 실시간으로 시각화  
-- PyQt 대시보드에서 게이지/그래프 형태로 표시  
-- 결과는 `.tsv` 형식(`window_features.tsv`, `reps_pred_dual.tsv`)으로 자동 저장
-
-### 7. 웨어러블 케이스 모델링
-<img width="817" height="688" alt="image" src="https://github.com/user-attachments/assets/db870a0e-abe2-4cee-9077-f69e6831b411" />
-
-### 8. 웨어러블 센서 기기 착용 방식
-<img width="694" height="938" alt="image" src="https://github.com/user-attachments/assets/7d32eb56-e8d7-4581-b838-29756dc52e43" />
-
-
-
+ 
 ### 🧠 요약
 - **FI (Fatigue Index)** → 근육 피로 누적 정도  
 - **BI (Balance Index)** → 좌우 근육 사용의 불균형 정도  
@@ -344,10 +294,4 @@ AI Smart Gym 프로젝트는 라즈베리파이5와 Hailo-8을 이용해 실시�
 
 ---
 
-## 📎 **Appendix**
-
-[피로도 분석 논문1.pdf](https://github.com/user-attachments/files/23041197/default.pdf)
-[피로도 분석 논문2.pdf](https://github.com/user-attachments/files/23042535/default.pdf)
-[피로도 분석 논문3.pdf](https://github.com/user-attachments/files/23042548/s41598-019-41860-4.pdf)
-
-
+ 
