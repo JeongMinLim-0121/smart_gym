@@ -1,4 +1,4 @@
-# 🏋️‍♂️ **AI Smart Gym Project**
+# 🏋️‍♂️ **AI Smart Gym Project🥈**
 
 
 
@@ -119,7 +119,6 @@ EMG·IMU 센서 융합 파워리프팅 스쿼트 분석까지 지원하는 파�
     <img src="https://img.shields.io/badge/Hailo-000?style=for-the-badge" height="24"/>
   </a>
 </p>
----
 
 ## 🚀 **기대 효과**
 
@@ -293,5 +292,4 @@ AI Smart Gym 프로젝트는 라즈베리파이5와 Hailo-8을 이용해 실시�
 앞으로는 EMG 자동 보정과 리포트 기능을 개선해 완성도를 높일 계획이다.
 
 ---
-
  
