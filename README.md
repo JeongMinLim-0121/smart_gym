@@ -78,21 +78,7 @@ EMG·IMU 센서 융합 파워리프팅 스쿼트 분석까지 지원하는 파�
 
 <img width="839" height="430" alt="image" src="https://github.com/user-attachments/assets/97e1d978-0dcd-4460-b81d-8fe5502806a3" />
 <img width="861" height="485" alt="image" src="https://github.com/user-attachments/assets/eeaca896-b994-43b9-892b-fadff9362e0d" />
-
-
-
----
-
-## 👥 **Team: 자세어때**
-
-| 이름 | 역할 | 주요 담당 |
-| --- | --- | --- |
-| **서민솔** | 팀장 | 프로젝트 총괄, 운동 분류 모델 설계 |
-| **이동현** | 부팀장 | 통합 어플리케이션 개발 |
-| **유종민** | 센서 | 센서 신호처리 AI 개발, 3D 모델링 |
-| **윤찬민** | AI 개발 | 운동 분류 모델 구현 |
-| **임정민** | 운동 분석 | 운동 분석 알고리즘 개발,Yocto 개발 |
-
+ 
 ---
 
 ## 🧠 **기술 스택**
